@@ -1,50 +1,491 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Download Joker777 for Android and Windows. Latest official builds.">
+  <title>Joker777 — Download</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Noto+Serif+Myanmar:wght@700;800&family=Padauk:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #07080c;
+      --bg-elevated: #101218;
+      --text: #f4f1ea;
+      --muted: #9a958a;
+      --line: rgba(255, 255, 255, 0.08);
+      --accent: #e8c36a;
+      --accent-soft: rgba(232, 195, 106, 0.14);
+      --card: rgba(255, 255, 255, 0.035);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+      --radius: 22px;
+    }
 
-    <title>Joker777</title>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 700px;
-            margin: 80px auto;
-            padding: 20px;
-            text-align: center;
-        }
+    html, body { min-height: 100%; }
 
-        h1 {
-            font-size: 42px;
-        }
+    body {
+      font-family: "Instrument Sans", Padauk, "Myanmar Text", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
 
-        .button {
-            display: block;
-            margin: 20px auto;
-            padding: 15px 25px;
-            max-width: 300px;
-            background: #222;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-        }
-    </style>
+    html[lang="my"] body {
+      font-family: Padauk, "Myanmar Text", "Instrument Sans", sans-serif;
+      line-height: 1.65;
+    }
+
+    html[lang="my"] h1 {
+      font-family: "Noto Serif Myanmar", Padauk, serif;
+      font-weight: 800;
+      letter-spacing: 0;
+      line-height: 1.35;
+      font-size: clamp(2.05rem, 5.8vw, 3.35rem);
+    }
+
+    html[lang="my"] h1 em {
+      font-family: "Noto Serif Myanmar", Georgia, serif;
+      font-weight: 900;
+      font-size: clamp(2.05rem, 5.8vw, 3.35rem);
+
+    }
+
+    .atmosphere {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        radial-gradient(900px 500px at 12% -10%, rgba(232, 195, 106, 0.16), transparent 55%),
+        radial-gradient(700px 480px at 100% 8%, rgba(90, 70, 180, 0.18), transparent 50%),
+        radial-gradient(800px 600px at 50% 120%, rgba(232, 195, 106, 0.08), transparent 45%);
+    }
+
+    .grid {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 28px 22px 64px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 8px 4px 48px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(160deg, #f3d58a, #b8892c);
+      color: #1a1408;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      box-shadow: 0 8px 24px rgba(232, 195, 106, 0.28);
+    }
+
+    .brand-name {
+      font-weight: 650;
+      letter-spacing: -0.03em;
+      font-size: 1.05rem;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .lang-switch {
+      display: inline-flex;
+      padding: 3px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .lang-switch button {
+      appearance: none;
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      font: inherit;
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 6px 11px;
+      border-radius: 999px;
+      cursor: pointer;
+    }
+
+    .lang-switch button[aria-pressed="true"] {
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    .pill {
+      font-size: 0.78rem;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      padding: 7px 12px;
+      border-radius: 999px;
+    }
+
+    .hero {
+      text-align: center;
+      max-width: 740px;
+      margin: 0 auto 48px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px var(--accent-soft);
+    }
+
+    h1 {
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: clamp(3rem, 8vw, 5.4rem);
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      line-height: 0.95;
+      margin-bottom: 18px;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .lede {
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .downloads {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-bottom: 36px;
+    }
+
+    .card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      padding: 28px 26px 24px;
+      border-radius: var(--radius);
+      background: var(--card);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: auto -20% 40% auto;
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle, var(--accent-soft), transparent 70%);
+      pointer-events: none;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(232, 195, 106, 0.35);
+      background: rgba(255,255,255,0.055);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--line);
+    }
+
+    .icon svg { width: 24px; height: 24px; fill: var(--accent); }
+
+    .os {
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .card h2 {
+      font-size: 1.55rem;
+      letter-spacing: -0.03em;
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: auto;
+      padding: 13px 16px;
+      border-radius: 14px;
+      background: linear-gradient(180deg, #f3d58a, #d4a84a);
+      color: #1a1408;
+      font-weight: 650;
+      font-size: 0.95rem;
+    }
+
+    .cta svg { width: 18px; height: 18px; }
+
+    .notes {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px 22px;
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    footer {
+      margin-top: 56px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    footer a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    footer a:hover { color: var(--text); }
+
+    @media (max-width: 720px) {
+      header { padding-bottom: 32px; }
+      .pill { display: none; }
+      .downloads { grid-template-columns: 1fr; }
+      footer { flex-direction: column; align-items: center; text-align: center; }
+    }
+  </style>
 </head>
-
 <body>
+  <div class="atmosphere" aria-hidden="true"></div>
+  <div class="grid" aria-hidden="true"></div>
 
-    <h1>Joker777</h1>
+  <div class="page">
+    <header>
+      <a class="brand" href="./">
+        <span class="mark">J7</span>
+        <span class="brand-name">Joker777</span>
+      </a>
+      <div class="header-actions">
+        <div class="lang-switch" role="group" aria-label="Language">
+          <button type="button" data-lang="en" aria-pressed="true">EN</button>
+          <button type="button" data-lang="my" aria-pressed="false">မြန်မာ</button>
+        </div>
+        <span class="pill" data-i18n="pill">Official downloads</span>
+      </div>
+    </header>
 
-    <p>Download the latest version</p>
+    <section class="hero">
+      <p class="eyebrow"><span class="dot"></span> <span data-i18n="eyebrow">Latest release</span></p>
+      <h1 data-i18n-html="headline">Get <em>Joker777</em><br>for every desk.</h1>
+      <p class="lede" data-i18n="lede">Official Android and Windows builds, served from GitHub Releases so you always land on the newest version.</p>
+    </section>
 
-    <a class="button" href="#">
-        Android APK
-    </a>
+    <section class="downloads" data-i18n-aria="downloads" aria-label="Downloads">
+      <a class="card" href="https://github.com/trendexplainer/joker777/releases/download/v1.0.0/joker777-app-1.0.0.apk">
+        <div class="card-top">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M17.6 9.48l1.86-3.22a.75.75 0 10-1.3-.75l-1.93 3.34A10.3 10.3 0 0012 8.1c-1.5 0-2.92.3-4.23.85L5.84 5.51a.75.75 0 10-1.3.75l1.86 3.22A9.9 9.9 0 002.1 16.5h19.8a9.9 9.9 0 00-4.3-7.02zM7.75 14.25a1.13 1.13 0 110-2.25 1.13 1.13 0 010 2.25zm8.5 0a1.13 1.13 0 110-2.25 1.13 1.13 0 010 2.25z"/></svg>
+          </div>
+          <span class="os" data-i18n="mobile">Mobile</span>
+        </div>
+        <div>
+          <h2>Android</h2>
+          <p class="meta" data-i18n="androidMeta">APK · Direct install from latest release</p>
+        </div>
+        <span class="cta">
+          <span data-i18n="downloadApk">Download APK</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        </span>
+      </a>
 
-    <a class="button" href="#">
-        Windows EXE
-    </a>
+      <a class="card" href="https://github.com/trendexplainer/joker777/releases/download/v1.0.0/Joker777-Setup-1.0.0.exe">
+        <div class="card-top">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M3 5.5A2.5 2.5 0 015.5 3h13A2.5 2.5 0 0121 5.5v8A2.5 2.5 0 0118.5 16H5.5A2.5 2.5 0 013 13.5v-8zM8 19h8a.75.75 0 010 1.5H8A.75.75 0 018 19zm4-4.5a.75.75 0 01.75.75V16h-1.5v-.75A.75.75 0 0112 14.5z"/></svg>
+          </div>
+          <span class="os" data-i18n="desktop">Desktop</span>
+        </div>
+        <div>
+          <h2>Windows</h2>
+          <p class="meta" data-i18n="windowsMeta">EXE installer · Direct from latest release</p>
+        </div>
+        <span class="cta">
+          <span data-i18n="downloadExe">Download EXE</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        </span>
+      </a>
+    </section>
 
+    <p class="notes">
+      <span data-i18n="note1">Always the newest published build</span>
+      <span>·</span>
+      <span data-i18n="note2">Sideload Android APKs from unknown sources if prompted</span>
+    </p>
+
+    <footer>
+      <span>© 2026 Joker777</span>
+      <a href="https://github.com/trendexplainer/joker777/releases/latest" data-i18n="github">View all releases on GitHub</a>
+    </footer>
+  </div>
+
+  <script>
+    const copy = {
+      en: {
+        title: "Joker777 — Download",
+        description: "Download Joker777 for Android and Windows. Latest official builds.",
+        pill: "Official downloads",
+        eyebrow: "Latest release",
+        headline: "Get <em>Joker777</em><br>for every desk.",
+        lede: "Official Android and Windows builds, served from GitHub Releases so you always land on the newest version.",
+        downloads: "Downloads",
+        mobile: "Mobile",
+        androidMeta: "APK · Direct install from latest release",
+        downloadApk: "Download APK",
+        desktop: "Desktop",
+        windowsMeta: "EXE installer · Direct from latest release",
+        downloadExe: "Download EXE",
+        note1: "Always the newest published build",
+        note2: "Sideload Android APKs from unknown sources if prompted",
+        github: "View all releases on GitHub"
+      },
+      my: {
+        title: "Joker777 — ဒေါင်းလုဒ်",
+        description: "Joker777 ကို Android နှင့် Windows အတွက် ဒေါင်းလုဒ်လုပ်ပါ။ ဆော့ဖ်ဝဲ နောက်ဆုံးထုတ်များ။",
+        pill: "ဆော့ဖ်ဝဲ ဒေါင်းလုဒ်များ",
+        eyebrow: "နောက်ဆုံးထုတ်ဗားရှင်း",
+        headline: "<em>Joker777</em> ကို<br>အခုပဲ ဒေါင်းလုဒ်လုပ်ပါ။",
+        lede: "Android နှင့် Windows ဆော့ဖ်ဝဲ build များကို GitHub Releases မှ ရယူနိုင်ပြီး အမြဲ နောက်ဆုံးဗားရှင်းကို ရပါမည်။",
+        downloads: "ဒေါင်းလုဒ်များ",
+        mobile: "မိုဘိုင်း",
+        androidMeta: "APK · နောက်ဆုံးထုတ်မှ တိုက်ရိုက်ထည့်သွင်းရန်",
+        downloadApk: "APK ဒေါင်းလုဒ်",
+        desktop: "ဒက်စ်တော့",
+        windowsMeta: "EXE installer · နောက်ဆုံးထုတ်မှ တိုက်ရိုက်",
+        downloadExe: "EXE ဒေါင်းလုဒ်",
+        note1: "ထုတ်ဝေပြီး နောက်ဆုံး build ကို အမြဲရရှိမည်",
+        note2: "Android တွင် မသိသောအရင်းအမြစ် ခွင့်ပြုရန် လိုနိုင်သည်",
+        github: "GitHub တွင် ထုတ်ဝေမှုအားလုံးကြည့်ရန်"
+      }
+    };
+
+    const html = document.documentElement;
+    const meta = document.querySelector('meta[name="description"]');
+    const buttons = document.querySelectorAll(".lang-switch button");
+
+    function setLang(lang) {
+      const t = copy[lang] || copy.en;
+      html.lang = lang;
+      document.title = t.title;
+      if (meta) meta.setAttribute("content", t.description);
+      document.querySelectorAll("[data-i18n]").forEach((el) => {
+        el.textContent = t[el.dataset.i18n];
+      });
+      document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+        el.innerHTML = t[el.dataset.i18nHtml];
+      });
+      document.querySelectorAll("[data-i18n-aria]").forEach((el) => {
+        el.setAttribute("aria-label", t[el.dataset.i18nAria]);
+      });
+      buttons.forEach((btn) => {
+        btn.setAttribute("aria-pressed", String(btn.dataset.lang === lang));
+      });
+      try { localStorage.setItem("joker777-lang", lang); } catch (e) {}
+    }
+
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => setLang(btn.dataset.lang));
+    });
+
+    let start = "en";
+    try {
+      const saved = localStorage.getItem("joker777-lang");
+      if (saved === "my" || saved === "en") start = saved;
+      else if (/^my\b/i.test(navigator.language || "")) start = "my";
+    } catch (e) {}
+    setLang(start);
+  </script>
 </body>
 </html>
